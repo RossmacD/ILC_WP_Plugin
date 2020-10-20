@@ -180,7 +180,10 @@ class ILC_Carousel extends Widget_Base {
         //     echo get_the_content();
         // }
         // echo '</p>';
-
+        // <svg width="25" height="21" viewBox="0 0 25 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        // <path d="M19.3063 20.6643H5.91404C5.69791 20.6643 5.5281 20.4945 5.5281 20.2784V14.6745C2.99631 14.4815 0.997131 12.3666 0.997131 9.78846C0.997131 7.07914 3.197 4.87927 5.90632 4.87927C6.52383 4.87927 7.14134 4.99505 7.72025 5.22662C7.91322 2.70255 10.0282 0.703369 12.6063 0.703369C15.1844 0.703369 17.3071 2.70255 17.5 5.23434C18.079 5.00277 18.6887 4.88699 19.314 4.88699C22.0233 4.88699 24.2232 7.08686 24.2232 9.79618C24.2232 12.3743 22.224 14.497 19.6922 14.6899V20.2861C19.6922 20.4945 19.5147 20.6643 19.3063 20.6643ZM6.29998 19.8924H18.9203V14.304C18.9203 14.0879 19.0901 13.918 19.3063 13.918C21.591 13.918 23.4513 12.0655 23.4513 9.78074C23.4513 7.49596 21.5988 5.64344 19.314 5.64344C18.6116 5.64344 17.9169 5.82097 17.3071 6.16832C17.1836 6.23779 17.0369 6.23007 16.9134 6.1606C16.7976 6.08341 16.7282 5.95219 16.7282 5.81325L16.7359 5.72834C16.7359 5.68975 16.7436 5.64344 16.7436 5.60484C16.7436 3.32778 14.8911 1.47525 12.6063 1.47525C10.3215 1.47525 8.4767 3.32778 8.4767 5.61256C8.4767 5.65887 8.4767 5.69747 8.48442 5.73606C8.48442 5.73606 8.49214 5.81325 8.49214 5.82097C8.49986 5.95991 8.43039 6.09113 8.30689 6.16832C8.1911 6.24551 8.03673 6.24551 7.91322 6.17604C7.30343 5.83641 6.60874 5.65115 5.90632 5.65115C3.62154 5.65115 1.76902 7.5114 1.76902 9.78846C1.76902 12.0655 3.62154 13.9258 5.90632 13.9258C6.12245 13.9258 6.29998 14.0956 6.29998 14.3117V19.8924Z" fill="#E30062"/>
+        // </svg>
+        
         // }else{
 		// echo '<p>NOOO</p>';<div class="title">
             // <?php echo $settings['title'];
@@ -198,8 +201,6 @@ class ILC_Carousel extends Widget_Base {
                         
                         while ( $query->have_posts() ) { 
                             $query->the_post();
-                            // echo get_the_title();
-                            // echo get_the_content();
                             echo '<section class="item elementor-section elementor-section-boxed">
                             <div class="elementor-container cardPos">
                             <div class="ilc-catLabel">salads</div>
@@ -266,8 +267,6 @@ class ILC_Carousel extends Widget_Base {
                     justify-content: flex-end;
                     align-items: flex-start;
                     height:100%;
-                    /* @media jsutifycontent spacebetween */
-                    
                 }
                
 
@@ -311,6 +310,12 @@ class ILC_Carousel extends Widget_Base {
                     padding:0.5rem 3rem 0.5rem 1rem;
                 }
 
+                .glider-dot.active {
+                    background: rgb(227,0,98,1);
+                }
+                .glider-dot {
+                    background: rgb(142,204,167);
+                }
 
                 @media all and (max-width: 750px) {
                     .cardPos{
@@ -318,7 +323,11 @@ class ILC_Carousel extends Widget_Base {
                     }
 
                     .glider-btn{
-                        background-color: rgba(13, 13, 13,0.75);
+                        /* background-color: #ccc; */
+                    background-color: rgba(255, 255, 255,0.5);
+                    }
+                    .glider-btn:hover{
+                        background-color: #ccc;
                     }
                 }
             </style>
