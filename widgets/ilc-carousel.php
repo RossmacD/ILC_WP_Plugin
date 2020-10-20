@@ -104,13 +104,23 @@ class ILC_Carousel extends Widget_Base {
 			]
 		);
 
+
+
 		$this->add_control(
 			'title',
 			[
 				'label' => __( 'Title', 'ilc-elementor-widgets' ),
 				'type' => Controls_Manager::TEXT,
 			]
-		);
+        );
+        
+        $this->add_control(
+			'limit',
+			[
+				'label' => __( 'Limit', 'ilc-elementor-widgets' ),
+				'type' => Controls_Manager::NUMBER,
+			]
+        );
 
 		$this->end_controls_section();
 
@@ -156,9 +166,8 @@ class ILC_Carousel extends Widget_Base {
         $settings = $this->get_settings_for_display();
         $args = array(
             'post_type' => 'recipe',
-            'posts_per_page' => '5',
-                'orderby' => 'name',
-                // 'order'   => 'ASC'
+            'posts_per_page' => (!$settings['limit']) ? 5 : $settings['limit'],
+            'orderby' => 'name',
         );
         $query = new \WP_Query($args);
 
@@ -181,27 +190,121 @@ class ILC_Carousel extends Widget_Base {
         ?>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
             <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
-            <div class="glider-contain"  >
+            <div class="glider-contain">
                 <div class="glider" >
-                    <div>1</div>
-                    <div>2</div>
-                    <div>3</div>
-                    <div>4</div>
+                
+                        <section class="item elementor-section elementor-section-boxed">
+                            <div class="elementor-container cardPos">
+                            <div class="ilc-catLabel">salads</div>
+
+                                <div class="ilc-card">
+                                    <div class="ilc-cardBody">
+                                        <h3>Grilled Peach Salad</h3>
+                                        <p>This salad may only have a few ingredients but its not short on a mix of flavours and texture</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    <div class="item">hi</div>
+                    <div class="item">hi</div>
+
                 </div>
 
 
-                <div data-glide-el="controls">
-                    <button data-glide-dir="<<"  class="glider-prev"><<</button>
-                    <button data-glide-dir=">>"  class="glider-next">>></button>
-                </div>
+                <button data-glide-dir="<"  class="glider-prev glider-btn">
+                    <i class="eicon-chevron-left" aria-hidden="true"></i>
+                </button>
+                        
+                <button data-glide-dir=">"  class="glider-next glider-btn">
+                    <i class="eicon-chevron-right" aria-hidden="true"></i>
+                </button>
                 <div role="tablist" class="dots"></div>
             </div>
+            <style>
+                .glider-contain{
+                    height:50vh;
+                    margin-bottom: 30px;
+                }
+                .glider-track{
+                    height:100%
+                }
+                .glider{
+                    height:100%
+                }
+
+                .item{
+                    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSNvatMGcVgTOvZFkIXH-t9PpU7zlZ1jXM1Hg&usqp=CAU");
+                    background-repeat: no-repeat; /* Do not repeat the image */
+                    background-size: cover; /* Resize the background image to cover the entire container */
+                    background-position: center;
+                    height:100%;
+                    
+                }
+                .cardPos{
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    align-items: flex-start;
+                    height:100%;
+                    /* @media jsutifycontent spacebetween */
+                    
+                }
+               
+
+                .ilc-card{
+                    max-width:480px;
+                }
+
+                .ilc-catLabel{
+                    text-transform: uppercase;
+                    background-color:#95CCA7;
+                    padding:0.5rem 1rem
+                    margin-bottom:1rem;
+                }
+
+                .ilc-cardBody{
+                    background-color:white;
+                    padding:1rem 1.5rem
+                }
+
+                .glider-btn{
+                    opacity:1;
+                    background-color:#95CCA7;
+                    /* padding:1.5rem 3rem; */
+                    padding:0.5rem 1rem 0.5rem 3rem;
+                    border-radius:4rem;
+                    /* padding: 1rem 4rem 0 0; */
+                }
+                .glider-btn i{
+                    color: white;
+                }
+
+                .glider-next{
+                    padding:0.5rem 3rem 0.5rem 1rem;
+                }
+
+
+                @media all and (max-width: 750px) {
+                    .cardPos{
+                        justify-content: space-between;
+                    }
+
+                    .glider-btn{
+                        background-color: #ccc;
+                        opacity:0.9;
+                    }
+                }
+            </style>
+
             <script>
             window.addEventListener('load', function(){
                 new Glider(document.querySelector('.glider'), {
                     slidesToShow: 1,
                     dots: '.dots',
                     draggable: true,
+                    scrollLock: true,
+                    rewind:true,
+                    // dragVelocity:20,
+                    scrollLockDelay:50,
                     arrows: {
                         prev: '.glider-prev',
                         next: '.glider-next'
