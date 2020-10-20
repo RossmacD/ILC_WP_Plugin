@@ -165,7 +165,7 @@ class ILC_Carousel extends Widget_Base {
 	protected function render() {
         $settings = $this->get_settings_for_display();
         $args = array(
-            'post_type' => 'recipe',
+            // 'post_type' => 'recipe',
             'posts_per_page' => (!$settings['limit']) ? 5 : $settings['limit'],
             'orderby' => 'name',
         );
@@ -193,7 +193,28 @@ class ILC_Carousel extends Widget_Base {
             <div class="glider-contain">
                 <div class="glider" >
                 
-                        <section class="item elementor-section elementor-section-boxed">
+                <?php 
+                    if ( $query->have_posts() ) {
+                        
+                        while ( $query->have_posts() ) { 
+                            $query->the_post();
+                            // echo get_the_title();
+                            // echo get_the_content();
+                            echo '<section class="item elementor-section elementor-section-boxed">
+                            <div class="elementor-container cardPos">
+                            <div class="ilc-catLabel">salads</div>
+                                <div class="ilc-card">
+                                    <div class="ilc-cardBody">
+                                        <h3>'.get_the_title().'</h3>
+                                        <p>'.get_the_content().'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>';
+                        }
+                    }
+                ?>
+                        <!-- <section class="item elementor-section elementor-section-boxed">
                             <div class="elementor-container cardPos">
                             <div class="ilc-catLabel">salads</div>
 
@@ -204,9 +225,9 @@ class ILC_Carousel extends Widget_Base {
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                    <div class="item">hi</div>
-                    <div class="item">hi</div>
+                        </section> -->
+                    <!-- <div class="item">hi</div> -->
+                    <!-- <div class="item">hi</div> -->
 
                 </div>
 
@@ -257,23 +278,31 @@ class ILC_Carousel extends Widget_Base {
                 .ilc-catLabel{
                     text-transform: uppercase;
                     background-color:#95CCA7;
-                    padding:0.5rem 1rem
-                    margin-bottom:1rem;
+                    padding:1rem 2rem;
+                    margin-bottom:1.5rem;
+                    color: white;
+
                 }
 
                 .ilc-cardBody{
-                    background-color:white;
+                    background-color: rgba(255, 255, 255,0.75);
+                    /* mix-blend-mode: lighten; */
                     padding:1rem 1.5rem
                 }
 
                 .glider-btn{
                     opacity:1;
-                    background-color:#95CCA7;
+                    background-color: rgba(142, 204, 167,0.7);
                     /* padding:1.5rem 3rem; */
                     padding:0.5rem 1rem 0.5rem 3rem;
-                    border-radius:4rem;
+                    /* border-radius:4rem;*/
+                    border-radius: 26px; 
                     /* padding: 1rem 4rem 0 0; */
                 }
+                .glider-btn:hover{
+                    background-color: rgba(255, 255, 255,0.5);
+                }
+
                 .glider-btn i{
                     color: white;
                 }
@@ -289,8 +318,7 @@ class ILC_Carousel extends Widget_Base {
                     }
 
                     .glider-btn{
-                        background-color: #ccc;
-                        opacity:0.9;
+                        background-color: rgba(13, 13, 13,0.75);
                     }
                 }
             </style>
