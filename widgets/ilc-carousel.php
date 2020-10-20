@@ -155,8 +155,7 @@ class ILC_Carousel extends Widget_Base {
 	protected function render() {
         $settings = $this->get_settings_for_display();
         $args = array(
-            // 'post_type' => 'recipe',
-            'taxonomy' => 'recipe',
+            'post_type' => 'recipe',
             'posts_per_page' => '5',
                 'orderby' => 'name',
                 // 'order'   => 'ASC'
@@ -164,22 +163,54 @@ class ILC_Carousel extends Widget_Base {
         $query = new \WP_Query($args);
 
            
-        if ( $query->have_posts() ) {
-        echo '<p>';
-        while ( $query->have_posts() ) { 
-            $query->the_post();
-            echo get_the_title();
-            echo get_the_content();
-        }
-        echo '</p>';
+        // if ( $query->have_posts() ) {
+        // echo '<p>';
+        // while ( $query->have_posts() ) { 
+        //     $query->the_post();
+        //     echo get_the_title();
+        //     echo get_the_content();
+        // }
+        // echo '</p>';
 
-        }else{
-		echo '<p>NOOO</p>';
+        // }else{
+		// echo '<p>NOOO</p>';<div class="title">
+            // <?php echo $settings['title'];
+            // </div>
 
-        }
-		echo '<div class="title">';
-		echo $settings['title'];
-		echo '</div>';
+        // }
+        ?>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+            <div class="glider-contain"  >
+                <div class="glider" >
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                </div>
+
+
+                <div data-glide-el="controls">
+                    <button data-glide-dir="<<"  class="glider-prev"><<</button>
+                    <button data-glide-dir=">>"  class="glider-next">>></button>
+                </div>
+                <div role="tablist" class="dots"></div>
+            </div>
+            <script>
+            window.addEventListener('load', function(){
+                new Glider(document.querySelector('.glider'), {
+                    slidesToShow: 1,
+                    dots: '.dots',
+                    draggable: true,
+                    arrows: {
+                        prev: '.glider-prev',
+                        next: '.glider-next'
+                    }
+                });
+            })
+            </script>
+		<?php
+        
 	}
 
 	/**
