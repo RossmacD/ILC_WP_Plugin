@@ -191,31 +191,32 @@ class ILC_Carousel extends Widget_Base {
 
         // }
         ?>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
-            <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
-            <div class="glider-contain">
-                <div class="glider" >
-                
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+        <div class="splide-contain">
+            <div class="splide" >
+                <div class="splide__track">
+                    <ul class="splide__list">
                 <?php 
-                    if ( $query->have_posts() ) {
+                    // if ( $query->have_posts() ) {
                         
-                        while ( $query->have_posts() ) { 
-                            $query->the_post();
-                            echo '<section class="item elementor-section elementor-section-boxed">
-                            <div class="elementor-container cardPos">
-                            <div class="ilc-catLabel">salads</div>
-                                <div class="ilc-card">
-                                    <div class="ilc-cardBody">
-                                        <h3>'.get_the_title().'</h3>
-                                        <p>'.get_the_content().'</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>';
-                        }
-                    }
+                    //     while ( $query->have_posts() ) { 
+                    //         $query->the_post();
+                    //         echo '<section class="item elementor-section elementor-section-boxed">
+                    //         <div class="elementor-container cardPos">
+                    //         <div class="ilc-catLabel">salads</div>
+                    //             <div class="ilc-card">
+                    //                 <div class="ilc-cardBody">
+                    //                     <h3>'.get_the_title().'</h3>
+                    //                     <p>'.get_the_content().'</p>
+                    //                 </div>
+                    //             </div>
+                    //         </div>
+                    //     </section>';
+                    //     }
+                    // }
                 ?>
-                        <!-- <section class="item elementor-section elementor-section-boxed">
+                        <section class="item elementor-section elementor-section-boxed splide__slide">
                             <div class="elementor-container cardPos">
                             <div class="ilc-catLabel">salads</div>
 
@@ -226,129 +227,169 @@ class ILC_Carousel extends Widget_Base {
                                     </div>
                                 </div>
                             </div>
-                        </section> -->
-                    <!-- <div class="item">hi</div> -->
-                    <!-- <div class="item">hi</div> -->
+                        </section> 
 
+
+                        <section class="item elementor-section elementor-section-boxed splide__slide">
+                            <div class="elementor-container cardPos">
+                            <div class="ilc-catLabel">salads</div>
+
+                                <div class="ilc-card">
+                                    <div class="ilc-cardBody">
+                                        <h3>Grilled Peach Salad</h3>
+                                        <p>This salad may only have a few ingredients but its not short on a mix of flavours and texture</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section> 
+                        
+                    </ul>
                 </div>
 
-
-                <button data-glide-dir="<"  class="glider-prev glider-btn">
+                <div class="splide__arrows">
+                <button class="splide__arrow splide__arrow--prev glider-btn">
                     <i class="eicon-chevron-left" aria-hidden="true"></i>
                 </button>
-                        
-                <button data-glide-dir=">"  class="glider-next glider-btn">
+                <button class="splide__arrow splide__arrow--next glider-btn">
                     <i class="eicon-chevron-right" aria-hidden="true"></i>
                 </button>
-                <div role="tablist" class="dots"></div>
             </div>
-            <style>
-                .glider-contain{
-                    height:50vh;
-                    margin-bottom: 30px;
-                }
-                .glider-track{
-                    height:100%
-                }
-                .glider{
-                    height:100%
-                }
+            </div>
 
-                .item{
-                    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSNvatMGcVgTOvZFkIXH-t9PpU7zlZ1jXM1Hg&usqp=CAU");
-                    background-repeat: no-repeat; /* Do not repeat the image */
-                    background-size: cover; /* Resize the background image to cover the entire container */
-                    background-position: center;
-                    height:100%;
+            
+            <!-- <button data-glide-dir="<"  class="splide__arrow splide__arrow--prev glider-btn">
+                <i class="eicon-chevron-left" aria-hidden="true"></i>
+            </button> -->
                     
-                }
+            <!-- <button data-glide-dir=">"  class="splide__arrow splide__arrow--next glider-btn">
+                <i class="eicon-chevron-right" aria-hidden="true"></i>
+            </button> -->
+            <!-- <div role="tablist" class="dots"></div> -->
+        </div>
+
+
+        <style>
+            .splide-contain{
+                height:50vh;
+                margin-bottom: 30px;
+            }
+            .splide__track, .splide, .splide__list, .splide__slide{
+                height:100%!important;
+            }
+            .glider{
+                height:100%;
+            }
+
+            .item{
+                background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSNvatMGcVgTOvZFkIXH-t9PpU7zlZ1jXM1Hg&usqp=CAU");
+                background-repeat: no-repeat; /* Do not repeat the image */
+                background-size: cover; /* Resize the background image to cover the entire container */
+                background-position: center;
+                height:100%;
+                
+            }
+            .cardPos{
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: flex-start;
+                height:100%;
+            }
+            
+
+            .ilc-card{
+                max-width:480px;
+            }
+
+            .ilc-catLabel{
+                text-transform: uppercase;
+                background-color:#95CCA7;
+                padding:1rem 2rem;
+                margin-bottom:1.5rem;
+                color: white;
+
+            }
+
+            .ilc-cardBody{
+                background-color: rgba(255, 255, 255,0.75);
+                /* mix-blend-mode: lighten; */
+                padding:1rem 1.5rem
+            }
+
+            .glider-btn{
+                opacity:1;
+                background-color: rgba(142, 204, 167,0.7);
+                /* padding:1.5rem 3rem; */
+                padding:0.5rem 1rem 0.5rem 3rem;
+                /* border-radius:4rem;*/
+                border-radius: 26px; 
+                /* padding: 1rem 4rem 0 0; */
+                height:auto;
+                font-size:4rem;
+            }
+            .glider-btn:hover{
+                background-color: rgba(255, 255, 255,0.5);
+            }
+
+            .glider-btn i{
+                color: white;
+            }
+
+            .splide__arrow--prev{
+                left:0;
+                border-radius:0 26px 26px 0rem;
+            }
+            .splide__arrow--next{
+                border-radius:26px 0 0 26px;
+                padding:0.5rem 3rem 0.5rem 1rem;
+                right:0;
+            }
+
+
+            .splide__pagination__page.is-active {
+                background: rgb(227,0,98,1);
+            }
+            .splide__pagination__page {
+                background: rgb(142,204,167);
+            }
+            .splide__pagination{
+                bottom: -1.5em;
+            }
+
+            @media all and (max-width: 750px) {
                 .cardPos{
-                    flex-direction: column;
-                    justify-content: flex-end;
-                    align-items: flex-start;
-                    height:100%;
-                }
-               
-
-                .ilc-card{
-                    max-width:480px;
-                }
-
-                .ilc-catLabel{
-                    text-transform: uppercase;
-                    background-color:#95CCA7;
-                    padding:1rem 2rem;
-                    margin-bottom:1.5rem;
-                    color: white;
-
-                }
-
-                .ilc-cardBody{
-                    background-color: rgba(255, 255, 255,0.75);
-                    /* mix-blend-mode: lighten; */
-                    padding:1rem 1.5rem
+                    justify-content: space-between;
                 }
 
                 .glider-btn{
-                    opacity:1;
-                    background-color: rgba(142, 204, 167,0.7);
-                    /* padding:1.5rem 3rem; */
-                    padding:0.5rem 1rem 0.5rem 3rem;
-                    /* border-radius:4rem;*/
-                    border-radius: 26px; 
-                    /* padding: 1rem 4rem 0 0; */
+                    /* background-color: #ccc; */
+                background-color: rgba(255, 255, 255,0.5);
                 }
                 .glider-btn:hover{
-                    background-color: rgba(255, 255, 255,0.5);
+                    background-color: #ccc;
                 }
+            }
+        </style>
 
-                .glider-btn i{
-                    color: white;
-                }
-
-                .glider-next{
-                    padding:0.5rem 3rem 0.5rem 1rem;
-                }
-
-                .glider-dot.active {
-                    background: rgb(227,0,98,1);
-                }
-                .glider-dot {
-                    background: rgb(142,204,167);
-                }
-
-                @media all and (max-width: 750px) {
-                    .cardPos{
-                        justify-content: space-between;
-                    }
-
-                    .glider-btn{
-                        /* background-color: #ccc; */
-                    background-color: rgba(255, 255, 255,0.5);
-                    }
-                    .glider-btn:hover{
-                        background-color: #ccc;
-                    }
-                }
-            </style>
-
-            <script>
-            window.addEventListener('load', function(){
-                new Glider(document.querySelector('.glider'), {
-                    slidesToShow: 1,
-                    dots: '.dots',
-                    draggable: true,
-                    scrollLock: true,
-                    rewind:true,
-                    // dragVelocity:20,
-                    scrollLockDelay:50,
-                    arrows: {
-                        prev: '.glider-prev',
-                        next: '.glider-next'
-                    }
-                });
-            })
-            </script>
+        <script>
+        window.addEventListener('load', function(){
+            new Splide('.splide', {
+                type   : 'loop',
+	            perPage: 1,
+                // slidesToShow: 1,
+                // dots: '.dots',
+                // draggable: true,
+                // scrollLock: true,
+                rewind:true,
+                height:50,
+                // // dragVelocity:20,
+                // scrollLockDelay:50,
+                // arrows: {
+                //     prev: '.glider-prev',
+                //     next: '.glider-next'
+                // }
+            }).mount();
+        })
+        </script>
 		<?php
         
 	}
