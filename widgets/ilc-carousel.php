@@ -197,26 +197,30 @@ class ILC_Carousel extends Widget_Base {
             <div class="splide" >
                 <div class="splide__track">
                     <ul class="splide__list">
-                <?php 
-                    // if ( $query->have_posts() ) {
+                
+                    <?php 
+                    if ( $query->have_posts() ) {
                         
-                    //     while ( $query->have_posts() ) { 
-                    //         $query->the_post();
-                    //         echo '<section class="item elementor-section elementor-section-boxed">
-                    //         <div class="elementor-container cardPos">
-                    //         <div class="ilc-catLabel">salads</div>
-                    //             <div class="ilc-card">
-                    //                 <div class="ilc-cardBody">
-                    //                     <h3>'.get_the_title().'</h3>
-                    //                     <p>'.get_the_content().'</p>
-                    //                 </div>
-                    //             </div>
-                    //         </div>
-                    //     </section>';
-                    //     }
-                    // }
+                        while ( $query->have_posts() ) { 
+                            $query->the_post();
+                        ?>
+                        <section class="item elementor-section elementor-section-boxed splide__slide">
+                            <div class="elementor-container cardPos">
+                            <div class="ilc-catLabel">salads</div>
+                                <div class="ilc-card">
+                                    <div class="ilc-cardBody">
+                                        <h3><?php echo get_the_title() ?></h3>
+                                        <p><?php echo get_the_content() ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section> 
+                        <?php 
+                        }
+                    }
                 ?>
-                        <section class="item elementor-section elementor-section-boxed splide__slide">
+
+                        <!-- <section class="item elementor-section elementor-section-boxed splide__slide">
                             <div class="elementor-container cardPos">
                             <div class="ilc-catLabel">salads</div>
 
@@ -227,21 +231,7 @@ class ILC_Carousel extends Widget_Base {
                                     </div>
                                 </div>
                             </div>
-                        </section> 
-
-
-                        <section class="item elementor-section elementor-section-boxed splide__slide">
-                            <div class="elementor-container cardPos">
-                            <div class="ilc-catLabel">salads</div>
-
-                                <div class="ilc-card">
-                                    <div class="ilc-cardBody">
-                                        <h3>Grilled Peach Salad</h3>
-                                        <p>This salad may only have a few ingredients but its not short on a mix of flavours and texture</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </section> 
+                        </section>  -->
                         
                     </ul>
                 </div>
