@@ -170,10 +170,10 @@ class ILC_Carousel extends Widget_Base {
             'orderby' => 'name',
         );
         $query = new \WP_Query($args);
-        
+
         ?>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+        <script  src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
         <div class="splide-contain">
             <div class="splide" >
                 <div class="splide__track">
@@ -190,8 +190,15 @@ class ILC_Carousel extends Widget_Base {
                             <div class="ilc-catLabel">salads</div>
                                 <div class="ilc-card">
                                     <div class="ilc-cardBody">
-                                        <h3><?php echo get_the_title() ?></h3>
-                                        <p><?php echo get_the_content() ?></p>
+                                        <div class="ilc-cardtext">
+                                            <h3><?php echo get_the_title() ?></h3>
+                                            <p><?php echo get_the_content() ?></p>
+                                        </div>
+                                        <div class="ilc-cardinfo">
+                                            <p>👨‍🍳</p>
+                                            <p>Easy</p>
+                                            <p>⭐⭐⭐⭐⭐</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -258,6 +265,7 @@ class ILC_Carousel extends Widget_Base {
 
             .ilc-card{
                 max-width:480px;
+                
             }
 
             .ilc-catLabel{
@@ -269,22 +277,35 @@ class ILC_Carousel extends Widget_Base {
 
             }
 
+            .ilc-cardtext{
+                flex:1;
+            }
+            .ilc-cardinfo{
+                flex:0.3;
+                display:flex;
+                flex-direction:column;
+                justify-content:flex-end;
+                align-items:flex-end;
+            }
+
             .ilc-cardBody{
                 background-color: rgba(255, 255, 255,0.75);
                 /* mix-blend-mode: lighten; */
-                padding:1rem 1.5rem
+                padding:1rem 1.5rem;
+                display:flex;
             }
 
             .glider-btn{
                 opacity:1;
                 background-color: rgba(142, 204, 167,0.7);
                 /* padding:1.5rem 3rem; */
-                padding:0.5rem 1rem 0.5rem 3rem;
+                padding:0.5rem 1rem 0.5rem 1rem;
                 /* border-radius:4rem;*/
                 border-radius: 26px; 
                 /* padding: 1rem 4rem 0 0; */
                 height:auto;
                 font-size:4rem;
+                width:auto;
             }
             .glider-btn:hover{
                 background-color: rgba(255, 255, 255,0.5);
@@ -300,7 +321,7 @@ class ILC_Carousel extends Widget_Base {
             }
             .splide__arrow--next{
                 border-radius:26px 0 0 26px;
-                padding:0.5rem 3rem 0.5rem 1rem;
+                padding:0.5rem 1rem 0.5rem 1rem;
                 right:0;
             }
 
