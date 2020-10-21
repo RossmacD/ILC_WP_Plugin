@@ -185,14 +185,17 @@ class ILC_Carousel extends Widget_Base {
                         while ( $query->have_posts() ) { 
                             $query->the_post();
                         ?>
-                        <section class="item elementor-section elementor-section-boxed splide__slide">
+                        <section class="item elementor-section elementor-section-boxed splide__slide" style=<?php echo '"background: url(\''. wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'full' )[0] .'\');"'?>>
                             <div class="elementor-container cardPos">
                             <div class="ilc-catLabel">salads</div>
                                 <div class="ilc-card">
                                     <div class="ilc-cardBody">
                                         <div class="ilc-cardtext">
                                             <h3><?php echo get_the_title() ?></h3>
-                                            <p><?php echo get_the_content() ?></p>
+                                            <p><?php 
+                                            echo the_excerpt()
+                                            // echo get_the_rating()
+                                            ?></p>
                                         </div>
                                         <div class="ilc-cardinfo">
                                             <p>👨‍🍳</p>
