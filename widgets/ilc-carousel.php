@@ -185,7 +185,7 @@ class ILC_Carousel extends Widget_Base {
                         while ( $query->have_posts() ) { 
                             $query->the_post();
                         ?>
-                        <section class="item elementor-section elementor-section-boxed splide__slide" style=<?php echo '"background: url(\''. wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'full' )[0] .'\');"'?>>
+                        <section class="item elementor-section elementor-section-boxed splide__slide" style=<?php echo '"background-image: url(\''. wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large' )[0] .'\');"'?>>
                             <div class="elementor-container cardPos">
                             <div class="ilc-catLabel">salads</div>
                                 <div class="ilc-card">
@@ -252,9 +252,9 @@ class ILC_Carousel extends Widget_Base {
             }
 
             .item{
-                background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSNvatMGcVgTOvZFkIXH-t9PpU7zlZ1jXM1Hg&usqp=CAU");
+                /* background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSNvatMGcVgTOvZFkIXH-t9PpU7zlZ1jXM1Hg&usqp=CAU"); */
                 background-repeat: no-repeat; /* Do not repeat the image */
-                background-size: cover; /* Resize the background image to cover the entire container */
+                background-size: cover;
                 background-position: center;
                 height:100%;
             }
@@ -277,7 +277,6 @@ class ILC_Carousel extends Widget_Base {
                 padding:1rem 2rem;
                 margin-bottom:1.5rem;
                 color: white;
-
             }
 
             .ilc-cardtext{
@@ -360,7 +359,7 @@ class ILC_Carousel extends Widget_Base {
                 type   : 'loop',
 	            perPage: 1,
                 rewind:true,
-                autoplay: true,
+                // autoplay: true,
 	            pauseOnHover: true,
             }).mount();
         })
