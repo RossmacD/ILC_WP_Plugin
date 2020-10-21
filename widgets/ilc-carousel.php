@@ -245,16 +245,6 @@ class ILC_Carousel extends Widget_Base {
                 </button>
             </div>
             </div>
-
-            
-            <!-- <button data-glide-dir="<"  class="splide__arrow splide__arrow--prev glider-btn">
-                <i class="eicon-chevron-left" aria-hidden="true"></i>
-            </button> -->
-                    
-            <!-- <button data-glide-dir=">"  class="splide__arrow splide__arrow--next glider-btn">
-                <i class="eicon-chevron-right" aria-hidden="true"></i>
-            </button> -->
-            <!-- <div role="tablist" class="dots"></div> -->
         </div>
 
 
@@ -365,18 +355,9 @@ class ILC_Carousel extends Widget_Base {
             new Splide('.splide', {
                 type   : 'loop',
 	            perPage: 1,
-                // slidesToShow: 1,
-                // dots: '.dots',
-                // draggable: true,
-                // scrollLock: true,
                 rewind:true,
-                height:50,
-                // // dragVelocity:20,
-                // scrollLockDelay:50,
-                // arrows: {
-                //     prev: '.glider-prev',
-                //     next: '.glider-next'
-                // }
+                autoplay: true,
+	            pauseOnHover: true,
             }).mount();
         })
         </script>
