@@ -165,7 +165,7 @@ class ILC_Carousel extends Widget_Base {
 	protected function render() {
         $settings = $this->get_settings_for_display();
         $args = array(
-            // 'post_type' => 'recipe',
+            'post_type' => 'recipe',
             'posts_per_page' => (!$settings['limit']) ? 5 : $settings['limit'],
             'orderby' => 'name',
         );
@@ -241,7 +241,7 @@ class ILC_Carousel extends Widget_Base {
 
         <style>
             .splide-contain{
-                height:50vh;
+                height:60vh;
                 margin-bottom: 30px;
             }
             .splide__track, .splide, .splide__list, .splide__slide{
@@ -299,18 +299,18 @@ class ILC_Carousel extends Widget_Base {
 
             .glider-btn{
                 opacity:1;
-                background-color: rgba(142, 204, 167,0.7);
+                background-color: rgba(142, 204, 167,0.7) !important;
                 /* padding:1.5rem 3rem; */
                 padding:0.5rem 1rem 0.5rem 1rem;
                 /* border-radius:4rem;*/
                 border-radius: 26px; 
                 /* padding: 1rem 4rem 0 0; */
                 height:auto;
-                font-size:4rem;
+                font-size:2rem;
                 width:auto;
             }
             .glider-btn:hover{
-                background-color: rgba(255, 255, 255,0.5);
+                background-color: rgba(255, 255, 255,0.5)!important;
             }
 
             .glider-btn i{
@@ -329,10 +329,10 @@ class ILC_Carousel extends Widget_Base {
 
 
             .splide__pagination__page.is-active {
-                background: rgb(227,0,98,1);
+                background: rgb(227,0,98,1)!important;
             }
             .splide__pagination__page {
-                background: rgb(142,204,167);
+                background: rgb(142,204,167)!important;
             }
             .splide__pagination{
                 bottom: -1.5em;
@@ -345,10 +345,10 @@ class ILC_Carousel extends Widget_Base {
 
                 .glider-btn{
                     /* background-color: #ccc; */
-                background-color: rgba(255, 255, 255,0.5);
+                background-color: rgba(255, 255, 255,0.5)!important;
                 }
                 .glider-btn:hover{
-                    background-color: #ccc;
+                    background-color: #ccc!important;
                 }
             }
         </style>
