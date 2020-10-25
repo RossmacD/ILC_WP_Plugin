@@ -104,8 +104,6 @@ class ILC_Carousel extends Widget_Base {
 			]
 		);
 
-
-
 		$this->add_control(
 			'title',
 			[
@@ -114,6 +112,7 @@ class ILC_Carousel extends Widget_Base {
 			]
         );
         
+        // Custom Controls
         $this->add_control(
 			'limit',
 			[
@@ -121,6 +120,25 @@ class ILC_Carousel extends Widget_Base {
 				'type' => Controls_Manager::NUMBER,
 			]
         );
+
+        $this->add_control(
+			'selected_posts',
+			[
+				'label' => __( 'Select Posts', 'ilc-elementor-widgets' ),
+				'type' => Controls_Manager::SELECT2,
+				'default' => '',
+				'options' => [
+					'' => __( 'None', 'ilc-elementor-widgets' ),
+					'uppercase' => __( 'UPPERCASE', 'ilc-elementor-widgets' ),
+					'lowercase' => __( 'lowercase', 'ilc-elementor-widgets' ),
+					'capitalize' => __( 'Capitalize', 'ilc-elementor-widgets' ),
+				],
+				'selectors' => [
+					'{{WRAPPER}} .title' => 'text-transform: {{VALUE}};',
+				],
+			]
+		);
+
 
 		$this->end_controls_section();
 
@@ -170,6 +188,7 @@ class ILC_Carousel extends Widget_Base {
             'orderby' => 'name',
         );
         $query = new \WP_Query($args);
+        $vote_count = woo_fnc_get_cont_rating(get_the_id());
 
         ?>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
@@ -184,8 +203,10 @@ class ILC_Carousel extends Widget_Base {
                         
                         while ( $query->have_posts() ) { 
                             $query->the_post();
+			                $skill_level = get_the_terms(get_the_id(), 'skill_level');
+
                         ?>
-                        <section class="item elementor-section elementor-section-boxed splide__slide" style=<?php echo '"background-image: url(\''. wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large' )[0] .'\');"'?>>
+                        <section class="item elementor-section elementor-section-boxed splide__slide" style=<?php echo '"background-image: url(\''. wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'small' )[0] .'\');"'?>>
                             <div class="elementor-container cardPos">
                             <div class="ilc-catLabel">salads</div>
                                 <div class="ilc-card">
@@ -199,8 +220,13 @@ class ILC_Carousel extends Widget_Base {
                                         </div>
                                         <div class="ilc-cardinfo">
                                             <p>👨‍🍳</p>
-                                            <p>Easy</p>
-                                            <p>⭐⭐⭐⭐⭐</p>
+                                            <p><?php echo $skill_level[0]->name?></p>
+                                            <p>
+                                                <?php for ($x = 1; $x <= woo_fnc_get_avg_rating(get_the_id()); $x++) {
+                                                    echo "⭐";
+                                                } ?>
+                                            </p>
+                                            <!-- <p>⭐⭐⭐⭐⭐</p> -->
                                         </div>
                                     </div>
                                 </div>
@@ -268,7 +294,6 @@ class ILC_Carousel extends Widget_Base {
 
             .ilc-card{
                 max-width:480px;
-                
             }
 
             .ilc-catLabel{
