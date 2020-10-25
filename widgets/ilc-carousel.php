@@ -208,6 +208,12 @@ class ILC_Carousel extends Widget_Base {
                         ?>
                         <section class="item elementor-section elementor-section-boxed splide__slide" style=<?php echo '"background-image: url(\''. wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'small' )[0] .'\');"'?>>
                             <div class="elementor-container cardPos">
+                            <h1 style="position:absolute;top:10%;right:25px;" onclick=<?php echo '"bookmark(\''. get_permalink() .'\','. get_the_id().')"'?>>
+                                <svg width="39" height="42" viewBox="0 0 39 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.76901 2.51267H35.231C35.9249 2.51267 36.4873 3.07515 36.4873 3.76901V38.0852C36.4873 39.1956 35.1523 39.7601 34.3557 38.9864L23.8766 28.8085C21.4391 26.441 17.5609 26.4411 15.1234 28.8085L4.64432 38.9864C3.84774 39.7601 2.51267 39.1957 2.51267 38.0852V3.76901C2.51267 3.07515 3.07515 2.51267 3.76901 2.51267Z" stroke="white" stroke-width="5.02534"/>
+                                </svg>
+                            </h1>
+
                             <div class="ilc-catLabel">salads</div>
                                 <div class="ilc-card">
                                     <div class="ilc-cardBody">
@@ -219,16 +225,25 @@ class ILC_Carousel extends Widget_Base {
                                             ?></p>
                                         </div>
                                         <div class="ilc-cardinfo">
-                                            <p>👨‍🍳</p>
+                                            <p><svg width="25" height="21" viewBox="0 0 25 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M19.3063 20.6643H5.91404C5.69791 20.6643 5.5281 20.4945 5.5281 20.2784V14.6745C2.99631 14.4815 0.997131 12.3666 0.997131 9.78846C0.997131 7.07914 3.197 4.87927 5.90632 4.87927C6.52383 4.87927 7.14134 4.99505 7.72025 5.22662C7.91322 2.70255 10.0282 0.703369 12.6063 0.703369C15.1844 0.703369 17.3071 2.70255 17.5 5.23434C18.079 5.00277 18.6887 4.88699 19.314 4.88699C22.0233 4.88699 24.2232 7.08686 24.2232 9.79618C24.2232 12.3743 22.224 14.497 19.6922 14.6899V20.2861C19.6922 20.4945 19.5147 20.6643 19.3063 20.6643ZM6.29998 19.8924H18.9203V14.304C18.9203 14.0879 19.0901 13.918 19.3063 13.918C21.591 13.918 23.4513 12.0655 23.4513 9.78074C23.4513 7.49596 21.5988 5.64344 19.314 5.64344C18.6116 5.64344 17.9169 5.82097 17.3071 6.16832C17.1836 6.23779 17.0369 6.23007 16.9134 6.1606C16.7976 6.08341 16.7282 5.95219 16.7282 5.81325L16.7359 5.72834C16.7359 5.68975 16.7436 5.64344 16.7436 5.60484C16.7436 3.32778 14.8911 1.47525 12.6063 1.47525C10.3215 1.47525 8.4767 3.32778 8.4767 5.61256C8.4767 5.65887 8.4767 5.69747 8.48442 5.73606C8.48442 5.73606 8.49214 5.81325 8.49214 5.82097C8.49986 5.95991 8.43039 6.09113 8.30689 6.16832C8.1911 6.24551 8.03673 6.24551 7.91322 6.17604C7.30343 5.83641 6.60874 5.65115 5.90632 5.65115C3.62154 5.65115 1.76902 7.5114 1.76902 9.78846C1.76902 12.0655 3.62154 13.9258 5.90632 13.9258C6.12245 13.9258 6.29998 14.0956 6.29998 14.3117V19.8924Z" fill="#E30062"/>
+<path d="M16.9292 18.9584H8.2918C8.07567 18.9584 7.90585 18.7886 7.90585 18.5725V16.8435C7.90585 16.6273 8.07567 16.4575 8.2918 16.4575H16.9292C17.1453 16.4575 17.3151 16.6273 17.3151 16.8435V18.5725C17.3151 18.7886 17.1376 18.9584 16.9292 18.9584ZM8.67774 18.1865H16.5433V17.2294H8.67774V18.1865Z" fill="#E30062"/>
+<path d="M22.3708 10.0664C22.1546 10.0664 21.9848 9.89654 21.9848 9.68042C21.9848 8.29874 20.8579 7.17179 19.4762 7.17179C19.2601 7.17179 19.0902 7.00197 19.0902 6.78585C19.0902 6.56972 19.2601 6.3999 19.4762 6.3999C21.2824 6.3999 22.7567 7.8742 22.7567 9.68042C22.7567 9.89654 22.5869 10.0664 22.3708 10.0664Z" fill="#E30062"/>
+</svg>
+</p>
                                             <p><?php echo $skill_level[0]->name?></p>
                                             <p>
                                                 <?php for ($x = 1; $x <= woo_fnc_get_avg_rating(get_the_id()); $x++) {
-                                                    echo "⭐";
+                                                    echo '<svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.73619 13.6723C9.31747 13.4379 8.80706 13.4379 8.38835 13.6723L4.8397 15.6587C4.49725 15.8504 4.0875 15.5527 4.16397 15.1678L4.95642 11.1788C5.04992 10.7082 4.89217 10.2228 4.53986 9.89698L1.55366 7.13569C1.26551 6.86925 1.42201 6.38753 1.81174 6.34131L5.85052 5.86231C6.32698 5.8058 6.73988 5.50582 6.94086 5.07014L8.64465 1.37675C8.80904 1.02041 9.3155 1.02041 9.47988 1.37675L11.1837 5.07014C11.3847 5.50582 11.7975 5.8058 12.274 5.86231L16.3128 6.34131C16.7025 6.38753 16.859 6.86924 16.5709 7.13569L13.5847 9.89698C13.2324 10.2228 13.0746 10.7082 13.1681 11.1788L13.9606 15.1678C14.037 15.5527 13.6273 15.8504 13.2848 15.6587L9.73619 13.6723Z" fill="#E30062" stroke="#E30062" stroke-width="0.919817"/>
+                                                    </svg>';
                                                 } ?>
                                             </p>
                                             <!-- <p>⭐⭐⭐⭐⭐</p> -->
                                         </div>
+
                                     </div>
+
                                 </div>
                             </div>
                         </section> 
@@ -236,20 +251,6 @@ class ILC_Carousel extends Widget_Base {
                         }
                     }
                 ?>
-
-                        <!-- <section class="item elementor-section elementor-section-boxed splide__slide">
-                            <div class="elementor-container cardPos">
-                            <div class="ilc-catLabel">salads</div>
-
-                                <div class="ilc-card">
-                                    <div class="ilc-cardBody">
-                                        <h3>Grilled Peach Salad</h3>
-                                        <p>This salad may only have a few ingredients but its not short on a mix of flavours and texture</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>  -->
-                        
                     </ul>
                 </div>
 
@@ -379,6 +380,23 @@ class ILC_Carousel extends Widget_Base {
         </style>
 
         <script>
+        const bookmark=(link,id)=>{
+            fetch(link+'?wpfpaction=add&postid='+id+'&ajax=1',{
+                headers : { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+
+                })
+                .then(response => {
+                    if(response.status===200)return response.json()
+                    console.log(response)
+                    throw new Error('Ah shit')
+                    })
+                .then(data => console.log(data))
+                .catch(err=>console.error(err));
+        }
+
         window.addEventListener('load', function(){
             new Splide('.splide', {
                 type   : 'loop',
