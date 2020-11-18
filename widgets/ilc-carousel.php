@@ -1,10 +1,12 @@
 <?php
 namespace ILC\Widgets;
-
+use \WpfpInterface\Wrapper;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+// define('WP_DEBUG', true);
+// get_my_favs();
+// if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
  * Elementor Hello World
@@ -122,9 +124,11 @@ class ILC_Carousel extends Widget_Base {
         );
 
         
-        // $query = new \WP_Query(array(
-        //     'post_type' => 'recipe',
-        // ));
+        $query = new \WP_Query(array(
+            'post_type' => 'recipe',
+        ));
+
+        // foreach ($query as &$value) {
 
         $this->add_control(
 			'selected_posts',
@@ -194,7 +198,6 @@ class ILC_Carousel extends Widget_Base {
         );
         $query = new \WP_Query($args);
         $vote_count = woo_fnc_get_cont_rating(get_the_id());
-
         ?>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
         <script  src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
@@ -213,11 +216,9 @@ class ILC_Carousel extends Widget_Base {
                         <section class="item elementor-section elementor-section-boxed splide__slide" style=<?php echo '"background-image: url(\''. wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'small' )[0] .'\');"'?>>
                             <div class="elementor-container cardPos">
                             <h1 style="position:absolute;top:10%;right:25px;" onclick=<?php echo '"bookmark(\''. get_permalink() .'\','. get_the_id().')"'?>>
-                            <!-- <a id="bookmarkme" href="#" rel="sidebar" title="bookmark this page"> -->
                                 <svg id=<?php echo '"bkmk-'. get_the_id().'"' ?> width="39" height="42" viewBox="0 0 39 42" class="bookmarkRecipe" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3.76901 2.51267H35.231C35.9249 2.51267 36.4873 3.07515 36.4873 3.76901V38.0852C36.4873 39.1956 35.1523 39.7601 34.3557 38.9864L23.8766 28.8085C21.4391 26.441 17.5609 26.4411 15.1234 28.8085L4.64432 38.9864C3.84774 39.7601 2.51267 39.1957 2.51267 38.0852V3.76901C2.51267 3.07515 3.07515 2.51267 3.76901 2.51267Z" stroke="white" stroke-width="5.02534"/>
                                 </svg>
-                                <!--  </a> -->
                             </h1>
 
                             <div class="ilc-catLabel">salads</div>
@@ -411,33 +412,29 @@ class ILC_Carousel extends Widget_Base {
         </style>
 
         <script>
-        const bookmark=(link,id,action="add")=>{
-            fetch(link+'?wpfpaction='+action+'&postid='+id+'&ajax=1',)
-                .then(response => {
-                    if(response.status===200){
-                        document.querySelector('#bkmk-'+id).classList.add('active')
-                        return
-                    }
-                    // console.log(response)
-                    // You must be logged in
-                    throw new Error('You must be logged in')
-                    })
-                .catch(err=>console.error(err));
-        }
+        <?php
 
-        window.addEventListener('load', function(){
-            new Splide('.splide', {
-                type   : 'loop',
-	            perPage: 1,
-                rewind:true,
-                // autoplay: true,
-	            pauseOnHover: true,
-            }).mount();
-        })
-        </script>
-		<?php
-        
-	}
+        $userFavs= new Wrapper();
+        $userFavs= $userFavs->all_posts();
+
+        if ($userFavs){
+        ?>
+            // Add active class to selector
+            const uniqninnininininininininininin=()=> [<?php
+            $c = 0;
+            foreach($userFavs as $post_id ) {
+                $c++;
+                echo $post_id;
+                if($c!=count($userFavs)){
+                    echo ",";
+                }
+            }?>]
+            // console.log('THESE ARE THE Recipeis',uniqninnininininininininininin)
+        <?php
+        }
+        echo "</script>";
+        return;
+    }
 
 	/**
 	 * Render the widget output in the editor.

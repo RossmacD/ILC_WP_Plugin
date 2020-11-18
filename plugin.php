@@ -47,7 +47,7 @@ class Plugin {
 	 * @access public
 	 */
 	public function widget_scripts() {
-		wp_register_script( 'ilc-elementor-widgets', plugins_url( '/assets/js/hello-world.js', __FILE__ ), [ 'jquery' ], false, true );
+		wp_register_script( 'ilc-elementor-widgets', plugins_url( '/assets/js/ilc-bkmk.js', __FILE__ ), [ 'jquery' ], false, true );
 	}
 
 	/**
@@ -100,7 +100,7 @@ class Plugin {
 	 */
 	private function include_widgets_files() {
 		require_once( __DIR__ . '/widgets/ilc-carousel.php' );
-		// require_once( __DIR__ . '/widgets/inline-editing.php' );
+		require_once( __DIR__ . '/interface/wpfp-interface.php' );
 	}
 
 	/**
